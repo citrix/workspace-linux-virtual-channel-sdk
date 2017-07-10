@@ -1,5 +1,5 @@
-site_name: Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.5
-site_description: Reference guide for Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.5
+site_name: Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.6
+site_description: Reference guide for Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.6
 theme_dir: citrix-sdk
 markdown_extensions:
   - admonition
