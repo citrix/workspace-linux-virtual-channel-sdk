@@ -1,0 +1,18 @@
+site_name: Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.5
+site_description: Reference guide for Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.5
+theme_dir: citrix-sdk
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: true
+  - toc:
+     anchorlink: true
+
+pages:
+  - Overview: index.md
+  - System Requirements: system-requirements.md
+  - Installing the Virtual Channel SDK: installation.md
+  - Architecture: architecture.md
+  - Using Example Programs: example-programs.md
+  - Programming Guide: programming-guide.md
+  - Programming Reference: programming-reference.md
