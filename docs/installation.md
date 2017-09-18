@@ -13,7 +13,7 @@ where technical discussions take place around each of the Citrix SDKs.
 
 2.  Open a terminal window.
 
-3.  Run the installation file by typing 
+3.  Run the installation file by typing
 
 ```
 tar xvfz vcsdk.tar.gz

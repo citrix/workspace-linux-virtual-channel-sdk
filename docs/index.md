@@ -1,5 +1,5 @@
 
-# Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.6
+# Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.7
 
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides
@@ -23,4 +23,3 @@ The Virtual Channel SDK provides:
 
 -   The Virtual Channel SDK requires the WFAPI SDK to write the server
     side of the virtual channel.
-
