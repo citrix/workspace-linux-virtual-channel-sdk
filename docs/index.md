@@ -1,5 +1,4 @@
-
-# Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.7
+# Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.8
 
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides

@@ -243,8 +243,7 @@ to develop the server-side component.
 2.  Change src/examples/vc/client/unix/MakeCOMMONVD to match the
     target platform.
     
-    **Note:** Linux does not require pingwire.c. Also, for Linux armel a
-cross compiler can be used. This is detected by the presence of the
+    **Note:** Linux does not require pingwire.c. This is detected by the presence of the
 environment variable, CROSS_COMPILER_PREFIX
 
 1.  Set the environment variable HOST_PREFIX to the target:
@@ -252,8 +251,6 @@ environment variable, CROSS_COMPILER_PREFIX
 	-   linux for Linux x64
 
 	-   linux for Linux x86
-
-	-   linuxarm for Linux armel
 
 	-   linuxarmhf for Linux armhf
 
