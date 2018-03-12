@@ -16,10 +16,10 @@ similar system.
 ## Execution Environment Requirements
 
 ### Server requirement
-The Linux Virtual Channel SDK is supported on Citrix Presentation Server 4.5, Citrix XenApp, versions 5.0, 6.0, 6.5, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.15, and Citrix XenDesktop, versions 4.0, 5.0, 5.5, 5.6, 7, 7.1, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.15 and 7.16. 
+The Linux Virtual Channel SDK is supported on Citrix Presentation Server 4.5, Citrix XenApp, versions 5.0, 6.0, 6.5, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.15, and Citrix XenDesktop, versions 4.0, 5.0, 5.5, 5.6, 7, 7.1, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11 and later. 
 
 ## Linux client requirement   
-Citrix Receiver for Linux 13.8
+Citrix Receiver for Linux 13.9
 
 !!!tip "Note"
 		The Linux Virtual Channel SDK is supported for use with the client of the corresponding version number and any LCM fixes for that release.
