@@ -177,7 +177,7 @@ data output process before returning control.
 ## Module.ini
 
 
-The Receivers use settings stored in Module.ini to determine which
+The Workspace apps use settings stored in Module.ini to determine which
 virtual channels to load. Driver developers can also use Module.ini to
 store parameters for virtual channels. Module.ini changes are effective
 only before the installation. After the installation, you must modify

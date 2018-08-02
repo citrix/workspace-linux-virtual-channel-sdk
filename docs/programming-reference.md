@@ -320,7 +320,18 @@ output buffers and sends data to the WinStation driver for transmission
 to the server.
 
 ```
-WDSETINFORMATION wdsi; VDWRITEHOOK vdwh;// Fill in a write hook structurevdwh.Type = g_usVirtualChannelNum; vdwh.pVdData = pVd;vdwh.pProc = (PVDWRITEPROCEDURE) ICADataArrival;// Fill in a set information structurewdsi.WdInformationClass = WdVirtualWriteHook;wdsi.pWdInformation = &vdwh;wdsi.WdInformationLength = sizeof(VDWRITEHOOK);uiSize = sizeof(WDSETINFORMATION);rc = VdCallWd( pVd, WDxSETINFORMATION, &wdsi, &uiSize);/* do error processing here */```
+WDSETINFORMATION wdsi; VDWRITEHOOK vdwh;
+// Fill in a write hook structure
+vdwh.Type = g_usVirtualChannelNum; vdwh.pVdData = pVd;
+vdwh.pProc = (PVDWRITEPROCEDURE) ICADataArrival;
+// Fill in a set information structure
+wdsi.WdInformationClass = WdVirtualWriteHook;
+wdsi.pWdInformation = &vdwh;
+wdsi.WdInformationLength = sizeof(VDWRITEHOOK);
+uiSize = sizeof(WDSETINFORMATION);
+rc = VdCallWd( pVd, WDxSETINFORMATION, &wdsi, &uiSize);
+/* do error processing here */
+```
 
 During the registration of the write hook, the WinStation driver passes
 entry points for the deprecated output buffer virtual driver helper
@@ -647,7 +658,7 @@ file descriptor.
 
 **fd**
 
-The file descriptor.
+The file descriptor.Workspace app
 
 ### Return Value
 
@@ -682,7 +693,7 @@ file descriptor.
 
 **fd**
 
-The file descriptor.
+The file descriptor.Workspace app
 
 ### Return Value
 

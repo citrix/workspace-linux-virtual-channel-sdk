@@ -184,7 +184,7 @@ use the Over program, starting at the top.
 
 OXS is the Noughts and Crosses game. The OXS virtual channel implements
 remote drawing of this game. The purpose of this is to demonstrate the
-following interfaces, which are specific to the Receiver for Linux:
+following interfaces, which are specific to the Workspace app for Linux:
 
 -   Sub-windows or overlay buffers
 
@@ -351,5 +351,5 @@ class and event flags, see logflags.h (located in src/inc/).
 
 5.  Create the debug.ini file in the current working directory.
 
-6.  Launch Receiver to implement the new virtual channel.
+6.  Launch Workspace app to implement the new virtual channel.
 

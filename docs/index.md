@@ -1,4 +1,4 @@
-# Citrix Virtual Channel SDK for Citrix Receiver for Linux 13.9.1
+# Citrix Virtual Channel SDK for Citrix Workspace app for Linux 1808
 
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides
@@ -6,7 +6,7 @@ support for writing server-side applications and client-side drivers for
 additional virtual channels using the ICA protocol. The server-side
 virtual channel applications are on XenApp or XenDesktop servers. This
 version of the SDK provides support for writing new virtual channels for
-Receiver for Linux. If you want to write virtual drivers for other
+Workspace app for Linux. If you want to write virtual drivers for other
 client platforms, contact Citrix.
 
 The Virtual Channel SDK provides:

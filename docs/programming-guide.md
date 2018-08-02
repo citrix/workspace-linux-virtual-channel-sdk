@@ -87,8 +87,8 @@ modular capability, each module (including virtual channel drivers)
 implements a fixed set of function entry points.
 
 There are six groups of functions:
-user-defined, virtual driver helper, memory INI, Receiver for Linux
-sub-window interface, Receiver for Linux event interface, and Receiver
+user-defined, virtual driver helper, memory INI, Workspace app for Linux
+sub-window interface, Workspace app for Linux event interface, and Workspace app
 for Linux timer interface.
 
 ###  User-Defined Functions
@@ -150,9 +150,9 @@ For more information, refer to All_Regions.ini file in the
  | miGetPrivateProfileLong  |   Returns a long value. |
  | miGetPrivateProfileString  | Returns a string value. |
  
-### Receiver for Linux Sub-Window Interface
+### Workspace app for Linux Sub-Window Interface
 
-Receiver for Linux sub-window interface allows a virtual channel to gain
+Workspace app for Linux sub-window interface allows a virtual channel to gain
 access to a sub-window of the client session in order to draw within a
 session. The sub-window interface is not designed to take keyboard and
 mouse input. It is simply for rendering graphics.
@@ -167,11 +167,11 @@ mouse input. It is simply for rendering graphics.
  | MM_TWI_clear_new_window_function | Clears the callback for seamless window creation. |
  | MM_TWI_set_new_window_function| Adds a callback for seamless window creation. |
 
-### Receiver for Linux Event (Evt) Interface
+### Workspace app for Linux Event (Evt) Interface
 
-Receiver for Linux event interface allows a virtual channel to select on
-a given file descriptor in the Receiver for Linux event loop and receive
-a callback from the Receiver for Linux event loop when the given
+Workspace app for Linux event interface allows a virtual channel to select on
+a given file descriptor in the Workspace app for Linux event loop and receive
+a callback from the Workspace app for Linux event loop when the given
 conditions are met.
 
 | Function | Description |
@@ -184,11 +184,11 @@ conditions are met.
 | Evt_trigger_for_input | Connects the callback of an event structure to be triggered on the given file descriptor satisfying the input conditions. |
 | Evt_trigger_for_output | Connects the callback of an event structure to be triggered on the given file descriptor satisfying the output conditions. |
          
-### Receiver for Linux Timer (Tmr) Interface
+### Workspace app for Linux Timer (Tmr) Interface
 
-Receiver for Linux timer interface allows a virtual channel to set up a
+Workspace app for Linux timer interface allows a virtual channel to set up a
 recurrent timer that invokes a given callback. The timer is attached to
-the event loop of the Receiver for Linux and is called from the event
+the event loop of the Workspace app for Linux and is called from the event
 loop when the timer fires.
 
 | Function | Description |
