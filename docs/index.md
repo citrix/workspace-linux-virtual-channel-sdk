@@ -1,4 +1,4 @@
-# Citrix Virtual Channel SDK for Citrix Workspace app for Linux 1808
+# Citrix Virtual Channel SDK for Citrix Workspace app 1808 for Linux
 
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides
