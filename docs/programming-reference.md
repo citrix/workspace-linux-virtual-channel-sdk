@@ -715,7 +715,7 @@ function is passed to the WinStation driver during DriverOpen.
 
 ### Calling Convention
 ```
-VOID wfcapi ICADataArrival(
+INT wfcapi ICADataArrival(
 PVD pVD,
 USHORT uChan,
 LPBYTE pBuf,
@@ -742,7 +742,7 @@ Length in bytes of the data in the buffer.
 
 ### Return Value
 
-No value is returned from this function.
+The driver returns CLIENT\_STATUS\_SUCCESS.
 
 ### Remarks
 
