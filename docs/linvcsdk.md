@@ -669,7 +669,7 @@ is EVT_OBJ_CREATE_FAILED.
 
 ### Remarks
 
-The Glib implementation of the event loop used by Receiver for Linux
+The Glib implementation of the event loop used by Citrix Workspace app for Linux
 watches for the input conditions G_IO_IN and G_IO_HUP.
 
 ## Evt_trigger_for_output
@@ -704,7 +704,7 @@ is EVT_OBJ_CREATE_FAILED.
 
 ### Remarks
 
-The Glib implementation of the event loop used by Receiver for Linux
+The Glib implementation of the event loop used by Citrix Workspace app for Linux
 watches for the ouput conditions G_IO_OUT.
 
 ## ICADataArrival
