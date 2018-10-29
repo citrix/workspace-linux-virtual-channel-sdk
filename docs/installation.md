@@ -8,7 +8,7 @@ documentation. Also included are the Citrix Developer Network forums,
 where technical discussions take place around each of the Citrix SDKs.
 
 1.  Download the Virtual Channel SDK, vcsdk.tar.gz, from
-    http://www.citrix.com/downloads/citrix-workspace-app/virtual-channel-sdks/virtual-channel-sdk.html
+    http://www.citrix.com/downloads/workspace-app/virtual-channel-sdks/virtual-channel-sdk.html
     to your user device.
 
 2.  Open a terminal window.
