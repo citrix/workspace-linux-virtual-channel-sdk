@@ -1,4 +1,4 @@
-# Citrix Virtual Channel SDK for Citrix Workspace app for Linux
+# Citrix Virtual Channel SDK for Citrix Workspace app for Linux 1912
 
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides

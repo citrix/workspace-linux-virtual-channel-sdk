@@ -1,6 +1,7 @@
 site_name: Citrix Virtual Channel SDK for Citrix Workspace app for Linux
 site_description: Reference guide for Citrix Virtual Channel SDK for Citrix Workspace app for Linux
 site_title: Developer Docs
+site_url: https://developer-docs.citrix.com
 
 # Copyright
 copyright: 'Copyright &copy; 1999-2019 Citrix Systems, Inc. All rights reserved. '
@@ -62,3 +63,4 @@ nav:
   - Using Example Programs: example-programs.md
   - Programming Guide: programming-guide.md
   - Programming Reference: programming-reference.md
+  - Questions?: https://discussions.citrix.com/forum/1385-citrix-developer-exchange/
