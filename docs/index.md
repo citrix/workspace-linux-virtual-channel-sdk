@@ -1,5 +1,4 @@
-# Citrix Virtual Channel SDK for Citrix Workspace app for Linux 1912
-
+# Citrix Virtual Channel SDK for Citrix Workspace app for Linux
 
 The Citrix Virtual Channel Software Development Kit (SDK) provides
 support for writing server-side applications and client-side drivers for
@@ -11,14 +10,14 @@ client platforms, contact Citrix.
 
 The Virtual Channel SDK provides:
 
--   The Citrix Virtual Driver Application Programming Interface (VDAPI)
+-  The Citrix Virtual Driver Application Programming Interface (VDAPI)
     used with the virtual channel functions in the Citrix Server API SDK
     (WFAPI SDK) to create new virtual channels. The virtual channel
     support provided by VDAPI is designed to make writing your own
     virtual channels easier.
 
--   Working source code for several virtual channel sample programs that
+-  Working source code for several virtual channel sample programs that
     demonstrate programming techniques.
 
--   The Virtual Channel SDK requires the WFAPI SDK to write the server
+-  The Virtual Channel SDK requires the WFAPI SDK to write the server
     side of the virtual channel.
