@@ -2,7 +2,7 @@
 
 For function summaries, see:
 
--   Client-Side Functions Overview
+-  Client-Side Functions Overview
 
 ## AppendVdHeader (Deprecated)
 
@@ -24,15 +24,15 @@ INT WFCAPI AppendVdHeader (
 
 ### Parameters
 
-**pWD**
+#### pWD
 
 Pointer to a WinStation driver control structure.
 
-**Channel**
+#### Channel
 
 Virtual channel number.
 
-**ByteCount**
+#### ByteCount
 
 Actual size in bytes of the virtual channel packet data to be sent. Do
 not include additional bytes reservered for the buffer overhead.
@@ -83,15 +83,15 @@ INT Driverclose(
 
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdClose**
+#### pVdClose
 
 Pointer to a standard driver close information structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the driver close information structure. This is
 an input parameter.
@@ -119,18 +119,20 @@ This function is not used but is available for linking with the common
 front end, VDAPI.
 
 ### Calling Convention
+
 ```
 INT DriverGetLastError(
 	PVD pVD,
 	PVDLASSTERROR pVdLastError);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdLastError**
+#### pVdLastError
 
 Pointer to a structure that receives the last error information.
 
@@ -160,15 +162,15 @@ INT DriverInfo(
 
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdInfo**
+#### pVdInfo
 
 Pointer to a standard driver information structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the driver information structure. This is an
 output parameter.
@@ -236,23 +238,25 @@ Initializes the virtual driver. The client engine calls this
 user-written function once when the client is loaded.
 
 ### Calling Convention
+
 ```
 INT DriverOpen(
 	PVD pVD, PVDOPEN pVdOpen)
 	PUINT16 puiSize);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to the virtual driver control structure. This pointer is passed
 on every call to the virtual driver.
 
-**pVdOpen**
+#### pVdOpen
 
 Pointer to the virtual driver Open structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the virtual driver Open structure. This is an
 output parameter.
@@ -289,6 +293,7 @@ uiSize = sizeof(WDQUERYINFORMATION);
 rc = VdCallWd(pVd, WDxQUERYINFORMATION, &wdqi, &uiSize);
 /* do error processing here */
 ```
+
 After the call to VdCallWd, the channel number is assigned in the
 OpenVirtualChannel structure's Channel element. Save the channel
 number and set the channel mask to indicate which channel this driver
@@ -306,6 +311,7 @@ pVdOpen->ChannelMask = (1L << g_usVirtualChannelNum);
 If you want the virtual driver to allocate memory for state data, it can
 have a pointer to this data returned on each call by placing the pointer
 in the virtual driver structure, as follows:
+
 ```
 pVd->pPrivate = pMyStructure;
 ```
@@ -359,7 +365,9 @@ pAppendVdHeader = vdwh.pAppendVdHeaderProc;
 !!!tip "Note"
 		vdwh.MaximumWriteSize is one byte greater than the actual
 maximum that you can use because it also includes the channel number.
+
 ```
+
 g_usMaxDataSize = vdwh.MaxiumWriteSize - 1;
 if(NULL == (pMyData = malloc( g_usMaxDataSize )))
 {
@@ -422,7 +430,6 @@ this prevents the rest of the client from processing.
 The Ping example includes examples of processing that can occur in
 DriverPoll.
 
-
 ## DriverQueryInformation
 
 Gets run-time information from the virtual driver.
@@ -435,6 +442,7 @@ PVD pVD,
 PVDQUERYINFORMATION pVdQueryInformation,
 PUINT16 puiSize);
 ```
+
 ### Parameters
 
 **pVD**

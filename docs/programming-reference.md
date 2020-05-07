@@ -2,7 +2,7 @@
 
 For function summaries, see:
 
--   [Client-Side Functions Overview](./programming-guide/#client-side-functions-overview)
+-  [Client-Side Functions Overview](./programming-guide/#client-side-functions-overview)
 
 ## AppendVdHeader (Deprecated)
 
@@ -20,19 +20,20 @@ INT WFCAPI AppendVdHeader (
 	PWD pWd,
 	USHORT Channel,
 	USHORT ByteCount);
+
 ```
 
 ### Parameters
 
-**pWD**
+#### pWD
 
 Pointer to a WinStation driver control structure.
 
-**Channel**
+#### Channel
 
 Virtual channel number.
 
-**ByteCount**
+#### ByteCount
 
 Actual size in bytes of the virtual channel packet data to be sent. Do
 not include additional bytes reservered for the buffer overhead.
@@ -83,15 +84,15 @@ INT Driverclose(
 
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdClose**
+#### pVdClose
 
 Pointer to a standard driver close information structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the driver close information structure. This is
 an input parameter.
@@ -119,18 +120,20 @@ This function is not used but is available for linking with the common
 front end, VDAPI.
 
 ### Calling Convention
+
 ```
 INT DriverGetLastError(
 	PVD pVD,
 	PVDLASSTERROR pVdLastError);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdLastError**
+#### pVdLastError
 
 Pointer to a structure that receives the last error information.
 
@@ -160,15 +163,15 @@ INT DriverInfo(
 
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdInfo**
+#### pVdInfo
 
 Pointer to a standard driver information structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the driver information structure. This is an
 output parameter.
@@ -236,23 +239,25 @@ Initializes the virtual driver. The client engine calls this
 user-written function once when the client is loaded.
 
 ### Calling Convention
+
 ```
 INT DriverOpen(
 	PVD pVD, PVDOPEN pVdOpen)
 	PUINT16 puiSize);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to the virtual driver control structure. This pointer is passed
 on every call to the virtual driver.
 
-**pVdOpen**
+#### pVdOpen
 
 Pointer to the virtual driver Open structure.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the virtual driver Open structure. This is an
 output parameter.
@@ -288,7 +293,9 @@ OpenVirtualChannel.pVCName = CTXPING_VIRTUAL_CHANNEL_NAME;
 uiSize = sizeof(WDQUERYINFORMATION);
 rc = VdCallWd(pVd, WDxQUERYINFORMATION, &wdqi, &uiSize);
 /* do error processing here */
+
 ```
+
 After the call to VdCallWd, the channel number is assigned in the
 OpenVirtualChannel structure's Channel element. Save the channel
 number and set the channel mask to indicate which channel this driver
@@ -306,6 +313,7 @@ pVdOpen->ChannelMask = (1L << g_usVirtualChannelNum);
 If you want the virtual driver to allocate memory for state data, it can
 have a pointer to this data returned on each call by placing the pointer
 in the virtual driver structure, as follows:
+
 ```
 pVd->pPrivate = pMyStructure;
 ```
@@ -359,6 +367,7 @@ pAppendVdHeader = vdwh.pAppendVdHeaderProc;
 !!!tip "Note"
 		vdwh.MaximumWriteSize is one byte greater than the actual
 maximum that you can use because it also includes the channel number.
+
 ```
 g_usMaxDataSize = vdwh.MaxiumWriteSize - 1;
 if(NULL == (pMyData = malloc( g_usMaxDataSize )))
@@ -388,15 +397,15 @@ PUINT16 puiSize);
 
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdPoll**
+#### pVdPoll
 
 Pointer to one of the driver poll information structures (DLLPOLL).
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the driver poll information structure. This is an
 output parameter.
@@ -415,13 +424,13 @@ Return values that begin with CLIENT_ERROR_ are fatal errors; the ICA
 session is disconnected.
 
 ### Remarks
+
 Because the client engine is single threaded, a virtual driver is not allowed to block while waiting for a
 desired result (such as the availability of an output buffer) because
 this prevents the rest of the client from processing.
 
 The Ping example includes examples of processing that can occur in
 DriverPoll.
-
 
 ## DriverQueryInformation
 
@@ -435,23 +444,24 @@ PVD pVD,
 PVDQUERYINFORMATION pVdQueryInformation,
 PUINT16 puiSize);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdQueryInformation**
+#### pVdQueryInformation
 
 Pointer to a structure that specifies the information to query and the
 results buffer.
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the query information and resolves structure.
 This is an output parameter.
 
-###Return Value
+### Return Value
 
 The function returns CLIENT_STATUS_SUCCESS.
 
@@ -475,19 +485,20 @@ PVD pVD,
 PVDSETINFORMATION pVdSetInformation,
 PUINT16 puiSize);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**pVdSetInformation**
+#### pVdSetInformation
 
 Pointer to a structure that specifies the information class, a pointer
 to any additional data, and the size in bytes of the additional data (if
 any).
 
-**puiSize**
+#### puiSize
 
 Pointer to the size of the information structure. This is an input
 parameter.
@@ -500,9 +511,9 @@ The function returns CLIENT_STATUS_SUCCESS.
 
 This function can receive two information classes:
 
--   VdDisableModule: When the connection is being closed.
+-  VdDisableModule: When the connection is being closed.
 
--   VdFlush: When WFPurgeInput or WFPurgeOutput is called by the
+-  VdFlush: When WFPurgeInput or WFPurgeOutput is called by the
     server-side virtual channel application. The VdSetInformation
     structure contains a pointer to a VDFLUSH structure that specifies
     which purge function was called.
@@ -523,21 +534,22 @@ PFNDELIVER pDeliverFunc,
 void \*pSubscriberId,
 PEVT \*out);
 ```
+
 ### Parameters
 
-**hTC**
+#### hTC
 
 Pass NULL value as a dummy.
 
-**pDeliverFunc**
+#### pDeliverFunc
 
 The callback to call.
 
-**pSubscriberId**
+#### pSubscriberId
 
 Data passed as an argument to the callback.
 
-**out**
+#### out
 
 The event structure returned.
 
@@ -563,14 +575,16 @@ Destroys previously created event structure by freeing its memory and
 nulling the given pointer.
 
 ### Calling Convention
+
 ```
 VPSTATUS
 Evt_destroy (
 PEVT \*phEvt);
 ```
+
 ### Parameters
 
-**phEvt**
+#### phEvt
 
 Pointer to the event object to destroy.
 
@@ -582,7 +596,6 @@ If the function succeeds, the return value is EVT_SUCCESS.
 
 The event object to destroy must be removed from the event loop using
 Evt_remove_triggers, before Evt_destroy is called.
-
 
 ## Evt_remove_triggers
 
@@ -596,9 +609,10 @@ VPSTATUS
 Evt_remove_triggers (
 Int fd);
 ```
+
 ### Parameters
 
-**fd**
+#### fd
 
 The file descriptor to remove all selections from.
 
@@ -622,9 +636,10 @@ VPSTATUS
 Evt_signal (
 PEVT hEvt);
 ```
+
 ### Parameters
 
-**hEvt**
+#### hEvt
 
 The event structure containing the callback to call.
 
@@ -643,20 +658,22 @@ Connects the callback of an event structure to trigger on the given file
 descriptor when it satisfies the input conditions.
 
 ### Calling Convention
+
 ```
 VPSTATUS
 Evt_trigger_for_input (
 PEVT hEvt,
 int fd);
 ```
+
 ### Parameters
 
-**hEvt**
+#### hEvt
 
 The event structure to associate with the input conditions of the given
 file descriptor.
 
-**fd**
+#### fd
 
 The file descriptor.Workspace app
 
@@ -677,20 +694,22 @@ Connects the callback of an event structure to trigger on the given file
 descriptor when it satisfies the output conditions.
 
 ### Calling Convention
+
 ```
 VPSTATUS
 Evt_trigger_for_output (
 PEVT hEvt,
 int fd);
 ```
+
 ### Parameters
 
-**hEvt**
+#### hEvt
 
 The event structure to associate with the ouput conditions of the given
 file descriptor.
 
-**fd**
+#### fd
 
 The file descriptor.Workspace app
 
@@ -713,6 +732,7 @@ virtual channel being monitored by the driver. The address of this
 function is passed to the WinStation driver during DriverOpen.
 
 ### Calling Convention
+
 ```
 INT wfcapi ICADataArrival(
 PVD pVD,
@@ -720,22 +740,23 @@ USHORT uChan,
 LPBYTE pBuf,
 USHORT Length);
 ```
+
 ### Parameters
 
-**pVD**
+#### pVD
 
 Pointer to a virtual driver control structure.
 
-**uChan**
+#### uChan
 
 Virtual channel number.
 
-**pBuf**
+#### pBuf
 
 Pointer to the data buffer containing the virtual channel data as sent
 by the server-side application.
 
-**Length**
+#### Length
 
 Length in bytes of the data in the buffer.
 
@@ -783,17 +804,18 @@ PCHAR lpszSection,
 PCHAR lpszEntry,
 BOOL bDefault);
 ```
+
 ### Parameters
 
-**lpszSection**
+#### lpszSection
 
 Name of section to query.
 
-**lpszEntry**
+#### lpszEntry
 
 Name of entry to query.
 
-**bDefault**
+#### bDefault
 
 Default value to use.
 
@@ -822,15 +844,15 @@ INT iDefault);
 
 ### Parameters
 
-**lpszSection**
+#### lpszSection
 
 Name of section to query.
 
-**lpszEntry**
+#### lpszEntry
 
 Name of entry to query.
 
-**iDefault**
+#### iDefault
 
 Default value to use.
 
@@ -854,15 +876,15 @@ LONG lDefault);
 
 ### Parameters
 
-**lpszSection**
+#### lpszSection
 
 Name of section to query.
 
-**lpszEntry**
+#### lpszEntry
 
 Name of entry to query.
 
-**lDefault**
+#### lDefault
 
 Default value to use.
 
@@ -887,23 +909,23 @@ PCHAR lpszReturnBuffer, INT cbSize);
 
 ### Parameters
 
-**lpszSection**
+#### lpszSection
 
 Name of section to query.
 
-**lpszEntry**
+#### lpszEntry
 
 Name of entry to query.
 
-**lpszDefault**
+#### lpszDefault
 
 Default value to use.
 
-**lpszReturnBuffer**
+#### lpszReturnBuffer
 
 Pointer to a buffer to hold results.
 
-**cbSize**
+#### cbSize
 
 Size of lpszReturnBuffer in bytes.
 
@@ -940,21 +962,22 @@ int count,
 struct tagTWI_RECT \*rects,
 BOOLEAN extended)
 ```
+
 ### Parameters
 
-**xwin**
+#### xwin
 
 Operating system session sub-window.
 
-**count**
+#### count
 
 Number of rectangles.
 
-**rects**
+#### rects
 
 Array of rectangles sorted by Y and X.
 
-**extended**
+#### extended
 
 TRUE for any extensions; otherwise, FALSE.
 
@@ -969,7 +992,6 @@ Rectangles are YXsorted.
 
 The last argument must be FALSE to start a fresh clipping update, and
 TRUE to add any clipping updates to the current clipping list.
-
 
 ## MM_destroy_window
 
@@ -986,11 +1008,11 @@ UINT32 xwin,
 
 ### Parameters
 
-**hwin**
+#### hwin
 
 Host (seamless) window identifiers, ignored for non-seamless sessions.
 
-**xwin**
+#### xwin
 
 x sub-window of the session window.
 
@@ -1016,13 +1038,14 @@ MM_get_window (
 UINT32 hwin,
 UINT32 \*xwinp,
 ```
+
 ### Parameters
 
-**hwin**
+#### hwin
 
 Host (seamless) window identifiers, ignored for non-seamless sessions.
 
-**xwinp**
+#### xwinp
 
 Local operating system window identifier. Returns the sub-window
 identifier of the session window. In this case, the X Window System is
@@ -1062,18 +1085,19 @@ UINT32 hwin,
 UINT32 xwin,
 CTXMM_RECT \*rt);
 ```
+
 ### Parameters
 
-**hwin**
+#### hwin
 
 Host (seamless) window identifiers, ignored for non-seamless sessions.
 
-**xwin**
+#### xwin
 
 Local operating system window identifier for the session sub-window. In
 this case, the X Window System is the operating system windowing system.
 
-**rt**
+#### rt
 
 CTXMM_RECT that describes the new window position and geometry.
 
@@ -1090,7 +1114,6 @@ The CTXMM_RECT window rectangle is within the session coordinates which
 are not window relative and consist of four unsigned 32-bit integers for
 left, top, right, and bottom.
 
-
 ## MM_show_window
 
 Makes a sub-window visible.
@@ -1102,9 +1125,10 @@ void
 MM_show_window (
 UINT32 xwin)
 ```
+
 ### Parameters
 
-**xwin**
+#### xwin
 
 Local operating system window identifier for the session sub-window. In
 this case, the X Window System is the operating system windowing system.
@@ -1201,15 +1225,15 @@ USHORT ByteCount);
 
 ### Parameters
 
-**pWd**
+#### pWd
 
 Pointer to a WinStation driver control structure.
 
-**pData**
+#### pData
 
 Pointer to the buffer containing the data to append.
 
-**ByteCount**
+#### ByteCount
 
 Number of bytes to append to the buffer.
 
@@ -1243,7 +1267,7 @@ driver.
 
 ## OutBufReserve (Deprecated)
 
-!!!tip "Note" 
+!!!tip "Note"
 		This function is deprecated. QueueVirtualWrite must be used in all
 new virtual drivers.
 
@@ -1261,11 +1285,11 @@ USHORT ByteCount);
 
 ### Parameters
 
-**pWd**
+#### pWd
 
 Pointer to a WinStation driver control structure.
 
-**ByteCount**
+#### ByteCount
 
 Size in bytes of the buffer needed. This must be four bytes larger than
 the data to be sent.
@@ -1291,12 +1315,12 @@ The developer determines the *ByteCount*, which can be any length up to
 the maximum size supported by the ICA connection. This size is
 independent of size restrictions on the lower-layer transport.
 
--   If the server is running XenApp or a version of Presentation Server
+-  If the server is running XenApp or a version of Presentation Server
     3.0 Feature Release 2 or later, the maximum packet size is 5000
     bytes (4996 bytes of data plus the 4-byte packet overhead generated
     by the ICA datastream manager)
 
--   If the server is running a version of Presentation Server earlier
+-  If the server is running a version of Presentation Server earlier
     than 3.0 Feature Release 2, the maximum packet size is 2048 bytes
     (2044 bytes of data plus the 4- byte packet overhead generated by
     the ICA datastream manager)
@@ -1322,7 +1346,7 @@ PWD pWd);
 
 ### Parameters
 
-**pWd**
+#### pWd
 
 Pointer to a WinStation driver control structure.
 
@@ -1365,23 +1389,23 @@ USHORT Flag);
 
 ### Parameters
 
-**pWd**
+#### pWd
 
 Pointer to a WinStation driver control structure.
 
-**Channel**
+#### Channel
 
 The virtual channel number
 
-**pMemorySections**
+#### pMemorySections
 
 Pointer to an array memory sections.
 
-**NrOfMemorySections**
+#### NrOfMemorySections
 
 The number of memory sections.
 
-**Flag**
+#### Flag
 
 This can be FLUSH_IMMEDIATELY if the data is required to be sent
 immediately or ! FLUSH_IMMEDIATELY for lower priority data.
@@ -1420,25 +1444,26 @@ PVOID pvSubscriber,
 PFNDELIVER pfnDeliver.
 PTMR * phTimer);
 ```
+
 ### Parameters
 
-**hTC**
+#### hTC
 
 The value is NULL.
 
-**uiPeriod**
+#### uiPeriod
 
 The timeout for the timer in milliseconds.
 
-**pvSubscriber**
+#### pvSubscriber
 
 Data passed as an argument to the callback.
 
-**pfnDeliver**
+#### pfnDeliver
 
 The callback to call.
 
-**phTimer**
+#### phTimer
 
 The returned timer structure.
 
@@ -1469,7 +1494,7 @@ PTMR \* phTimer);
 
 ### Parameters
 
-**phTimer**
+#### phTimer
 
 The timer to destroy.
 
@@ -1496,11 +1521,11 @@ BOOL fEnabled);
 
 ### Parameters
 
-**hTimer**
+#### hTimer
 
 The timer to enable or disable.
 
-**fEnabled**
+#### fEnabled
 
 Enables or disables the timer.
 
@@ -1528,11 +1553,11 @@ UNIT32 uiPeriod);
 
 ### Parameters
 
-**hTimer**
+#### hTimer
 
 The timer to change the timeout period for.
 
-**uiPeriod**
+#### uiPeriod
 
 The new timeout period in milliseconds.
 
@@ -1545,7 +1570,6 @@ If the function succeeds, the return value is TMR_SUCCESS.
 If the timer is already running, the timer is reset and fires after the
 new period. If the timer is disabled, the timeout period is updated but
 the timer remains disabled.
-
 
 ## VdCallWd
 
@@ -1563,22 +1587,23 @@ USHORT ProcIndex,
 PVOID pParam,
 PUINT16 puiSize);
 ```
+
 ### Parameters
 
-**pVd**
+#### pVd
 
 Pointer to a virtual driver control structure.
 
-**ProcIndex**
+#### ProcIndex
 
 Index of the WinStation driver routine to call. For virtual drivers,
 this can be either WDxQUERYINFORMATION or WDxSETINFORMATION.
 
-**pParam**
+#### pParam
 
 Pointer to a parameter structure, used for both input and output.
 
-**puiSize**
+#### puiSize
 
 Size of parameter structure, used for both input and output.
 
@@ -1595,9 +1620,9 @@ This function is a general purpose mechanism to call routines in the
 WinStation driver. The only valid uses of this function for a virtual
 driver are:
 
--   To allocate the virtual channel using WDxQUERYINFORMATION
+-  To allocate the virtual channel using WDxQUERYINFORMATION
 
--   To exchange function pointers with the WinStation driver during
+-  To exchange function pointers with the WinStation driver during
     DriverOpen using WDxSETINFORMATION
 
 For more information, see DriverOpen or the Ping example.
