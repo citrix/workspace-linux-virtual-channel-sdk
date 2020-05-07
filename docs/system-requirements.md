@@ -20,7 +20,7 @@ The Linux Virtual Channel SDK is supported on Citrix Presentation Server 4.5, Ci
 
 ## Linux client requirement
 
-Citrix Workspace app for Linux 1998 or later
+Citrix Workspace app for Linux 1908 or later
 
 !!!tip "Note"
 		The Linux Virtual Channel SDK is supported for use with the client of the corresponding version number and any LCM fixes for that release.
