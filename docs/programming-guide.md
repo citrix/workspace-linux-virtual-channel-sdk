@@ -13,13 +13,12 @@ the existing naming convention when adding your own virtual channels.
 The predefined channels, which begin with the OEM identifier CTX, are
 for use only by Citrix.
 
-
 ## Design Suggestions
 
 Follow these suggestions to make your virtual channels easier to design
 and enhance:
 
--   When you design your own virtual channel protocol, allow for the
+-  When you design your own virtual channel protocol, allow for the
     flexibility to add features. Virtual channels have version numbers
     that are exchanged during initialization so that both the client and
     the server detect the maximum level of functionality that can
@@ -28,7 +27,7 @@ and enhance:
     functionality beyond Version 3 because the client does not know how
     to interpret the newer packets.
 
--   Because the server side of a virtual channel protocol can be
+-  Because the server side of a virtual channel protocol can be
     implemented as a separate process, it is easier to write code that
     interfaces with the Citrix-provided virtual channel support on the
     server than on the client (where the code must fit into an existing
@@ -45,7 +44,7 @@ Writing for the client-side is similar to writing a driver, which must
 provide services to the system in addition to using system services.
 If a service is written, it must manage multiple connections.
 
--   If you are designing new hardware for use with new virtual channels
+-  If you are designing new hardware for use with new virtual channels
     (for example, an improved compressed video format), make sure the
     hardware can be detected so that the client can determine whether or
     not it is installed. Then the client can communicate to the server
@@ -53,7 +52,7 @@ If a service is written, it must manage multiple connections.
     data format. Optionally, you could have the virtual driver translate
     the new data format for use with older hardware.
 
--   There might be limitations preventing your new virtual channel from
+-  There might be limitations preventing your new virtual channel from
     performing at an optimum level. If the client is connecting to the
     server running XenApp through a low-speed connection, the bandwidth
     might not be great enough to properly support audio or video data.
@@ -62,7 +61,7 @@ If a service is written, it must manage multiple connections.
     but reducing the frame rate of the video to fit the
     available bandwidth.
 
--   To identify where problems are occurring (connection,
+-  To identify where problems are occurring (connection,
     implementation, or protocol), first get the connection and
     communication working. Then, after the virtual channel is complete
     and debugged, do some time trials and record the results. These
@@ -70,12 +69,11 @@ If a service is written, it must manage multiple connections.
     such as compression and other enhancements so that the channel
     requires less bandwidth.
 
--   The time stamp in the pVdPoll variable can be helpful for resolving
+-  The time stamp in the pVdPoll variable can be helpful for resolving
     timing issues in your virtual driver. It is a ULONG containing the
     current time in milliseconds. The pVdPoll variable is a pointer to a
     DLLPOLL structure. See dllapi.h (in base/inc/) for definitions of
     these structures.
-
 
 ## Client-Side Functions Overview
 
@@ -91,7 +89,7 @@ user-defined, virtual driver helper, memory INI, Workspace app for Linux
 sub-window interface, Workspace app for Linux event interface, and Workspace app
 for Linux timer interface.
 
-###  User-Defined Functions
+### User-Defined Functions
 
 To make writing virtual channels easier, dynamic loading is handled by
 the WinStation driver, which in turn calls user-defined functions. This
@@ -131,7 +129,7 @@ when VdCallWd is called with the WDxSETINFORMATION parameter.
  | OutBufReserve (**Deprecated**)  |  Checks for available output buffer space. |
  | OutBufWrite (**Deprecated**)    |  Sends the buffer to the server. |
  | VdCallWd     | Used to query and set information from the WinStation driver (WD). |
-                   
+
 ### Memory INI Functions
 
 Memory INI functions read data from the client engine configuration
@@ -149,7 +147,7 @@ For more information, refer to All_Regions.ini file in the
 |  miGetPrivateProfileInt   |   Returns an integer value. |
  | miGetPrivateProfileLong  |   Returns a long value. |
  | miGetPrivateProfileString  | Returns a string value. |
- 
+
 ### Workspace app for Linux Sub-Window Interface
 
 Workspace app for Linux sub-window interface allows a virtual channel to gain
@@ -183,7 +181,7 @@ conditions are met.
 | Evt_signal | Calls the function stored in the event structure. |
 | Evt_trigger_for_input | Connects the callback of an event structure to be triggered on the given file descriptor satisfying the input conditions. |
 | Evt_trigger_for_output | Connects the callback of an event structure to be triggered on the given file descriptor satisfying the output conditions. |
-         
+
 ### Workspace app for Linux Timer (Tmr) Interface
 
 Workspace app for Linux timer interface allows a virtual channel to set up a
@@ -197,5 +195,3 @@ loop when the timer fires.
 | Tmr_destroy | Destroys a timer object given a printer to its handle and sets the handle to NULL. |
 | Tmr_setEnabled | Enables or disables a timer object. |
 | Tmr_setPeriod  |  Sets the timeout period for a timer. |
-  
-

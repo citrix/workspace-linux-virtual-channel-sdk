@@ -5,21 +5,22 @@ similar system.
 
 ## Development Environment Requirements
 
-
--   GNU Compiler Collection (GCC) compiler
+-  GNU Compiler Collection (GCC) compiler
     on all platforms
 
--   ARM Compiler (cross-compiler) requires a GCC cross-compiler
+-  ARM Compiler (cross-compiler) requires a GCC cross-compiler
 
--   GNU Make utility
+-  GNU Make utility
 
 ## Execution Environment Requirements
 
 ### Server requirement
-The Linux Virtual Channel SDK is supported on Citrix Presentation Server 4.5, Citrix XenApp, versions 5.0, 6.0, 6.5, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.15, and Citrix XenDesktop, versions 4.0, 5.0, 5.5, 5.6, 7, 7.1, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11 and later. 
 
-## Linux client requirement   
-Citrix Workspace app for Linux 1912
+The Linux Virtual Channel SDK is supported on Citrix Presentation Server 4.5, Citrix XenApp, versions 5.0, 6.0, 6.5, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.15, and Citrix XenDesktop, versions 4.0, 5.0, 5.5, 5.6, 7, 7.1, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11 and later.
+
+## Linux client requirement
+
+Citrix Workspace app for Linux 1908 or later
 
 !!!tip "Note"
 		The Linux Virtual Channel SDK is supported for use with the client of the corresponding version number and any LCM fixes for that release.

@@ -1,17 +1,16 @@
 # Architecture
 
-
 A Citrix Independent Computing Architecture (ICA) virtual channel is a
 bidirectional error-free connection for the exchange of generalized
 packet data between a server running Citrix XenApp and a client device.
 Developers can use virtual channels to add functionality to clients.
 Uses for virtual channels include:
 
--   Support for administrative functions
+-  Support for administrative functions
 
--   New data streams (audio and video)
+-  New data streams (audio and video)
 
--   New devices, such as scanners, card readers, and joysticks)
+-  New devices, such as scanners, card readers, and joysticks)
 
 ## Virtual Channel Overview
 
@@ -20,12 +19,12 @@ exchange of generalized packet data between a client and a server
 running Citrix XenApp or XenDesktop. Each implementation of an ICA
 virtual channel consists of two components:
 
-**Server-side portion on the computer running XenApp or XenDesktop**
+### Server-side portion on the computer running XenApp or XenDesktop
 
 The virtual channel on the server side is a normal Win32 process; it can
 be either an application or a Windows NT service.
 
-**Client-side portion on the client device**
+### Client-side portion on the client device
 
 The client-side virtual channel driver is a dynamically loadable module
 (.DLL) that executes in the context of the client. You must write your
@@ -34,7 +33,6 @@ virtual driver.
 This figure illustrates the virtual channel client-server connection:
 
 ![](./vc-client-server-connection.png)
-
 
 The WinStation driver is responsible for demultiplexing the virtual
 channel data from the ICA data stream and routing it to the correct
@@ -49,20 +47,20 @@ virtual channel:
     client passes information about the virtual channels it supports to
     the server.
 
-2.  The server-side application starts, obtains a handle to the virtual
+1.  The server-side application starts, obtains a handle to the virtual
     channel, and optionally queries for additional information about
     the channel.
 
-3.  The client-side virtual driver and server-side application pass data
+1.  The client-side virtual driver and server-side application pass data
     using the following two methods:
 
-	-   If the server application has data to send to the client, the data
+    -  If the server application has data to send to the client, the data
     is sent to the client immediately. When the client receives the
     data, the WinStation driver demultiplexes the virtual channel data
     from the ICA stream and passes it immediately to the client
     virtual driver.
 
-	-   If the client virtual driver has data to send to the server, the
+    -  If the client virtual driver has data to send to the server, the
     data is sent by using the QueueVirtualWrite call for the newly
     written virtual drivers. The data can be sent at any point that the
     virtual driver is processing the main process control flow. Do not
@@ -89,7 +87,7 @@ currently configured transport protocol.
 
 The ICA engine provides the following services to the virtual channel:
 
-**Packet encapsulation**
+### Packet encapsulation
 
 ICA virtual channels are packet-based, meaning that if one side performs
 a write with a certain amount of data, the other side receives the
@@ -99,13 +97,13 @@ to parse out packet boundaries. Stated another way, virtual channel
 packets are contained within the ICA stream, which is managed separately
 by system software.
 
-**Error correction**
+#### Error correction
 
 ICA provides its own reliability mechanisms even when the underlying
 transport is unreliable. This guarantees that connections are error free
 and that data is received in the order in which it is sent.
 
-**Flow control**
+#### Flow control
 
 The virtual channel API provides several types of flow control. This
 allows designers to structure their channels to handle only a specific
@@ -132,7 +130,7 @@ The following process occurs when a user starts the client:
     determine the modules to configure, including how to configure the
     virtual channel drivers.
 
-2.  The client engine loads the virtual channel drivers defined in the
+1.  The client engine loads the virtual channel drivers defined in the
     Configuration Storage in the configuration files by calling the Load
     function, which must be exported explicitly by the virtual channel
     driver .DLL. The Load function is defined in the static library file
@@ -140,7 +138,7 @@ The following process occurs when a user starts the client:
     this library file. The Load function forwards the driver entry
     points defined in the .DLL to the client engine.
 
-3.  For each virtual channel, the WinStation driver calls the DriverOpen
+1.  For each virtual channel, the WinStation driver calls the DriverOpen
     function, which establishes and initializes the virtual channel. The
     WinStation driver passes the addresses of the output buffer
     management functions in the WinStation driver to the virtual
@@ -149,16 +147,16 @@ The following process occurs when a user starts the client:
     the client loads, not when the virtual channel is opened by the
     server-side application.
 
-4.  When virtual channel data arrives from the server, the WinStation
+1.  When virtual channel data arrives from the server, the WinStation
     driver calls the ICADataArrival function for that virtual driver.
 
-5.  To send data, the virtual channel driver has two options:
+1.  To send data, the virtual channel driver has two options:
 
-	-   To use the QueueVirtualWrite function which is simple to use and
+    -  To use the QueueVirtualWrite function which is simple to use and
     offers the option for immediate data transfer. This is the method
     that should be used for all new virtual drivers.
 
-	-   To use the **deprecated** client-side helper functions (these
+    -  To use the **deprecated** client-side helper functions (these
     addresses are obtained during initialization) to reserve an output
     buffer, fill it with data, and write the buffer.
 
@@ -166,16 +164,15 @@ The following process occurs when a user starts the client:
     buffers for transmission to the host. Checks for available space
     using OutBufReserve.
 
-2.  Fills in the buffer using AppendVdHeader and OutBufAppend.
+1.  Fills in the buffer using AppendVdHeader and OutBufAppend.
 
-3.  Writes the data using OutBufWrite.
+1.  Writes the data using OutBufWrite.
 
 The WinStation driver does not preserve the output buffer data between
 calls to the virtual driver, so the virtual driver must complete the
 data output process before returning control.
 
 ## Module.ini
-
 
 The Workspace apps use settings stored in Module.ini to determine which
 virtual channels to load. Driver developers can also use Module.ini to
@@ -187,7 +184,6 @@ virtual channels.
 Use the memory INI functions to read data from Configuration Storage.
 
 ## Virtual Channel Packets
-
 
 ICA does not define the contents of a virtual channel packet. The
 contents are specific to the particular virtual channel and are not
@@ -251,4 +247,3 @@ the ACK packet and send it to the server. The server sends entire
 packets; if the next packet to be sent is larger than the window, the
 server blocks the send until the window is large enough to accommodate
 the entire packet.
-
